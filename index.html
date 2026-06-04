@@ -69,6 +69,17 @@
             <h2 class="section-title">My Projects</h2>
             <div class="projects-grid">
                 <div class="project-card">
+                    <div class="project-image-container">
+                        <img src="https://placehold.co/600x400/1e293b/c084fc?text=The+Mark+Hotel" alt="The Mark Hotel Preview" class="project-image">
+                        <div class="project-image-overlay">
+                            <a href="https://themarkhotel.netlify.app" class="preview-link" target="_blank">
+                                <i class="fas fa-external-link-alt"></i> Live Demo
+                            </a>
+                            <a href="https://github.com/Angela-Kerubo/themarkhotel" class="preview-link" target="_blank">
+                                <i class="fab fa-github"></i> GitHub
+                            </a>
+                        </div>
+                    </div>
                     <div class="project-content">
                         <div class="project-title">The Mark Hotel</div>
                         <div class="project-description">Modern hotel website with booking form, amenities, FAQ and contact form. Fully responsive design.</div>
@@ -80,9 +91,20 @@
                     </div>
                 </div>
                 <div class="project-card">
+                    <div class="project-image-container">
+                        <img src="https://placehold.co/600x400/1e293b/c084fc?text=Movie+Explorer" alt="Movie Explorer Preview" class="project-image">
+                        <div class="project-image-overlay">
+                            <a href="https://movie0app1.netlify.app" class="preview-link" target="_blank">
+                                <i class="fas fa-external-link-alt"></i> Live Demo
+                            </a>
+                            <a href="https://github.com/Angela-Kerubo/React-Movie-App" class="preview-link" target="_blank">
+                                <i class="fab fa-github"></i> GitHub
+                            </a>
+                        </div>
+                    </div>
                     <div class="project-content">
                         <div class="project-title">Movie Explorer</div>
-                        <div class="project-description">React movie search app using an external API. Search any movie and it to your favorites.</div>
+                        <div class="project-description">React movie search app using an external API. Search any movie and add it to your favorites.</div>
                         <div class="project-tech"><span class="tech-badge">React</span><span class="tech-badge">JavaScript</span><span class="tech-badge">API</span></div>
                         <div class="project-links">
                             <a href="https://movie0app1.netlify.app" class="project-link" target="_blank">Live Demo</a>
@@ -91,6 +113,14 @@
                     </div>
                 </div>
                 <div class="project-card">
+                    <div class="project-image-container">
+                        <img src="https://placehold.co/600x400/1e293b/c084fc?text=Marks+Tracking+System" alt="Marks Tracking System Preview" class="project-image">
+                        <div class="project-image-overlay">
+                            <a href="https://github.com/Angela-Kerubo/marks_tracking_system" class="preview-link" target="_blank">
+                                <i class="fab fa-github"></i> GitHub
+                            </a>
+                        </div>
+                    </div>
                     <div class="project-content">
                         <div class="project-title">Marks Tracking System</div>
                         <div class="project-description">Examination management system for tracking University student results. PHP backend with MySQL database.</div>
@@ -129,12 +159,12 @@
                         <td><img src="https://www.vectorlogo.zone/logos/w3_html5/w3_html5-ar21.svg" alt="HTML5"></td>
                         <td><img src="https://www.vectorlogo.zone/logos/w3_css/w3_css-ar21.svg" alt="CSS3"></td>
                         <td><img src="https://www.vectorlogo.zone/logos/javascript/javascript-ar21.svg" alt="JavaScript"></td>
-                        <td><img src="https://www.vectorlogo.zone/logos/reactjs/reactjs-ar21.svg" alt="Python"></td>
+                        <td><img src="https://www.vectorlogo.zone/logos/reactjs/reactjs-ar21.svg" alt="React"></td>
                     </tr>
                     <tr>
                         <td><img src="https://www.vectorlogo.zone/logos/getbootstrap/getbootstrap-ar21.svg" alt="Bootstrap"></td>
                         <td><img src="https://www.vectorlogo.zone/logos/php/php-ar21.svg" alt="PHP"></td>
-                        <td><img src="https://www.vectorlogo.zone/logos/python/python-ar21.svg" alt="React"></td>
+                        <td><img src="https://www.vectorlogo.zone/logos/python/python-ar21.svg" alt="Python"></td>
                         <td><img src="https://www.vectorlogo.zone/logos/mysql/mysql-ar21.svg" alt="MySQL"></td>
                     </tr>
                 </table>
@@ -172,6 +202,27 @@
 
 <script src="script.js"></script>
 <script>
+    // Mobile menu toggle
+    const toggleButton = document.getElementById('mobileToggle');
+    const navLinks = document.getElementById('navLinks');
+    
+    toggleButton.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+    });
+    
+    // Smooth scroll for anchor links
+    document.querySelectorAll('.smooth-scroll').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                targetElement.scrollIntoView({ behavior: 'smooth' });
+                navLinks.classList.remove('active');
+            }
+        });
+    });
+    
     // Create floating particles
     function createParticles() {
         const particlesContainer = document.getElementById('particles');
@@ -181,19 +232,12 @@
             const particle = document.createElement('div');
             particle.classList.add('particle');
             
-            // Random size between 2px and 8px
             const size = Math.random() * 6 + 2;
             particle.style.width = size + 'px';
             particle.style.height = size + 'px';
-            
-            // Random starting position
             particle.style.left = Math.random() * 100 + '%';
-            
-            // Random animation duration between 15 and 30 seconds
             const duration = Math.random() * 15 + 15;
             particle.style.animationDuration = duration + 's';
-            
-            // Random animation delay
             particle.style.animationDelay = Math.random() * 20 + 's';
             
             particlesContainer.appendChild(particle);
